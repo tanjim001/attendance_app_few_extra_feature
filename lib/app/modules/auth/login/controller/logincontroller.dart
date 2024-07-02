@@ -40,25 +40,35 @@ class LoginController extends GetxController {
       return; // Exit the function if no internet
     }
     try {
-      logger.d("Starting sign in process.");
-      final UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: loginEmailController.text.trim(),
-        password: loginPasswordController.text.trim()
-      );
+      if (loginEmailController.text.trim() != '' &&
+          loginPasswordController.text.trim() != '') {
+        logger.d("Starting sign in process.");
+        final UserCredential userCredential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: loginEmailController.text.trim(),
+                password: loginPasswordController.text.trim());
 
-      if (userCredential.user != null && userCredential.user!.emailVerified == true) {
-        Loaders.successSnackBar(title: "Successfully logged in");
-        await localStorage.saveData(StringConst.loggedin, true);
-        logger.d("User signed in and email verified. Restarting LocationTimeController and navigating to Test screen.");
+        if (userCredential.user != null &&
+            userCredential.user!.emailVerified == true) {
+          Loaders.successSnackBar(title: "Successfully logged in");
+          await localStorage.saveData(StringConst.loggedin, true);
+          logger.d(
+              "User signed in and email verified. Restarting LocationTimeController and navigating to Test screen.");
 
-        // Restart LocationTimeController
-        Get.delete<LocationTimeController>();  // Remove the existing instance
-        Get.put(LocationTimeController());  // Recreate the instance
-
-        Get.offAll(() => const Test());
-      } else if (userCredential.user != null && userCredential.user!.emailVerified == false) {
-        logger.d("User signed in but email not verified. Navigating to EmailVerificationScreen.");
-        Get.offAll(() => const Emailverificationscreen());
+          // Restart LocationTimeController
+          Get.delete<LocationTimeController>();
+          Get.put(LocationTimeController());
+          Get.offAll(() => const Test());
+        } else if (userCredential.user != null &&
+            userCredential.user!.emailVerified == false) {
+          logger.d(
+              "User signed in but email not verified. Navigating to EmailVerificationScreen.");
+          Get.offAll(() => const Emailverificationscreen());
+        } else if (userCredential.user == null) {}
+      } else {
+        Loaders.warningSnackBar(
+            title: "Email or password is empty",
+            message: "Please recheck both  than login");
       }
     } on FirebaseAuthException catch (e) {
       logger.e("FirebaseAuthException: ${e.message}");

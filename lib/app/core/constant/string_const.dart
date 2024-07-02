@@ -1,17 +1,26 @@
 
 class StringConst {
 
+  //lottie files
+  static const second ="assets/onboarding/1.json";
+  static const first="assets/onboarding/2.json";
+  static const third="assets/onboarding/3.json";
+
+//system
   static const registered = "REGISTERD";
   static const verified = "VERIFIED";
   static const loggedin="LOGGED_IN";
+  static const isfirst="Isfirst";
  //task filter string
   static const assignedTo="assignedTo";
   static const ongoing="Ongoing";
   static const completed='Completed';
   static const reviewing="Reviewing";
   static const todo="To-do";
+
   //database collection string
   static const attendancerecord = "Attendance_Record";
+  static const leaveapplication="Application";
   static const userdata = "User_Data";
   static const notice="NOTICE";
   static const task="Task";

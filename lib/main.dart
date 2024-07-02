@@ -6,11 +6,16 @@ import 'package:attendanceapp/app/modules/auth/forgot_screen.dart';
 import 'package:attendanceapp/app/modules/home/home_view.dart';
 import 'package:attendanceapp/app/modules/notice/notice_view.dart';
 import 'package:attendanceapp/app/modules/notice/notice_list.dart';
+import 'package:attendanceapp/app/modules/onboarding/onboarding_screen.dart';
 import 'package:attendanceapp/app/modules/profile/profile_view.dart';
+import 'package:attendanceapp/app/modules/task/task_view.dart';
+import 'package:attendanceapp/app/modules/task/widget/completedtasks.dart';
+import 'package:attendanceapp/app/modules/task/widget/reviewingtask.dart';
 import 'package:attendanceapp/app/navigation.dart';
 import 'package:attendanceapp/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get_state_manager/src/simple/list_notifier.dart';
 import 'package:get_storage/get_storage.dart';
 import 'app/modules/auth/login/login_screen.dart';
 import 'app/modules/auth/register/register_screen.dart';
@@ -19,11 +24,9 @@ import 'package:get/get.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 
 void main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   //getsorage initialized
   await GetStorage.init();
-
   // initialized Firebase
   try {
     await Firebase.initializeApp(
@@ -56,12 +59,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home: (localStorage.readData(StringConst.loggedin) == null ||
-              localStorage.readData(StringConst.loggedin) == false)
-          ? const LoginScreen()
-          : const NavigationScreen(), 
+      home: ((localStorage.readData(StringConst.isfirst)) == null)
+          ? OnboardingScreen()
+          : (localStorage.readData(StringConst.loggedin) == null ||
+                  localStorage.readData(StringConst.loggedin) == false)
+              ? const LoginScreen()
+              : const NavigationScreen(),
       getPages: [
-        GetPage(name: '/', page: () => const LoginScreen()),
+        GetPage(name: '/login', page: () => const LoginScreen()),
         GetPage(name: '/register', page: () => const RegisterScreen()),
         GetPage(name: '/home', page: () => const HomePage()),
         GetPage(name: '/emailver', page: () => const Emailverificationscreen()),
@@ -69,7 +74,11 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/profile', page: () => const ProfileView()),
         GetPage(name: '/notice_list', page: () => const NoticeList()),
         GetPage(name: '/notice_view', page: () => const NoticeView()),
+        GetPage(name: '/task-manager', page: () => const TaskView()),
+        GetPage(name: '/review', page: () => const Reviewingtask()),
+        GetPage(name: '/completed', page: () => const CompletedTasks()),
         GetPage(name: '/attendance_view', page: () => const AttendanceView()),
+        GetPage(name: '/onboard', page: () => OnboardingScreen())
       ],
     );
   }
