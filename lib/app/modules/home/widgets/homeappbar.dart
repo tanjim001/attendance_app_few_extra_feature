@@ -8,7 +8,8 @@ import 'package:velocity_x/velocity_x.dart';
 
 AppBar homeAppBar() {
   final profileController = Get.put(ProfileController());
-    final greeting = getGreeting();
+  final locationTimeController = Get.put(LocationTimeController());
+
   return AppBar(
     toolbarHeight: 80,
     backgroundColor: Vx.gray600,
@@ -21,12 +22,16 @@ AppBar homeAppBar() {
           return 'Hey ${data.name}'.text.bold.size(28).white.capitalize.make();
         }),
         5.heightBox,
-        '$greeting Make your attendance'
-            .text
-            .semiBold
-            .size(16)
-            .white
-            .make(),
+        Obx(() {
+          final hour = locationTimeController.datetime.value?.hour ?? DateTime.now().hour;
+          final greeting = getGreeting(hour);
+          return '$greeting Make your attendance'
+              .text
+              .semiBold
+              .size(16)
+              .white
+              .make();
+        }),
       ],
     ),
     actions: [
@@ -59,14 +64,13 @@ AppBar homeAppBar() {
     ],
   );
 }
-  String getGreeting() {
-    final controller=Get.put(LocationTimeController());
-    final hour = controller.datetime.value!.hour!;
-    if (hour < 12) {
-      return 'Good Morning!';
-    } else if (hour < 18) {
-      return 'Good Afternoon!';
-    } else {
-      return 'Good Evening!';
-    }
+
+String getGreeting(int hour) {
+  if (hour < 12) {
+    return 'Good Morning!';
+  } else if (hour < 18) {
+    return 'Good Afternoon!';
+  } else {
+    return 'Good Evening!';
   }
+}

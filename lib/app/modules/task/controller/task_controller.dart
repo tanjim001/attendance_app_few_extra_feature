@@ -150,12 +150,12 @@ class TaskController extends GetxController {
         if (subtaskIndex != -1) {
           if (newDoneStatus!=null)task.subtasks![subtaskIndex].done = newDoneStatus;
           if(newAttachmentLink!='')task.subtasks![subtaskIndex].attachmentLink = newAttachmentLink;
-          if(newAttachmentLink!=''&& newDoneStatus!=null){
+        
           await FirebaseFirestore.instance
               .collection(StringConst.task)
               .doc(taskId)
               .update(task.toJson());
-          }
+          
           logger.d('Subtask updated successfully!');
         } else {
           logger.w('Subtask not found!');

@@ -41,8 +41,9 @@ class TaskDetail extends StatelessWidget {
                       Loaders.successSnackBar(
                           title: "Submited",
                           message: "Your task is submited for reviewing");
-                      Get.back();
+                      
                     });
+                    Get.back();
                   } else {
                     Loaders.warningSnackBar(
                         title: "Task not finished",
