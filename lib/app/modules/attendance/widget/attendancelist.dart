@@ -1,4 +1,4 @@
-import 'package:attendanceapp/app/core/constant/string_const.dart';
+import 'package:attendanceapp/app/core/utils/constants/string_const.dart';
 import 'package:attendanceapp/app/modules/attendance/controller/attendancecontroller.dart';
 import 'package:get/get.dart';
 

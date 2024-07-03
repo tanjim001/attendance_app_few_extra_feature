@@ -15,18 +15,18 @@ class AttendanceFloatButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16), // Rounded square shape
+          borderRadius: BorderRadius.circular(16), 
         ),
         padding: const EdgeInsets.symmetric(
-            horizontal: 24, vertical: 16), // Padding for button content
-        backgroundColor: Colors.green, // Background color
-        foregroundColor: Colors.white, // Text color
+            horizontal: 24, vertical: 16), 
+        backgroundColor: Colors.green, 
+        foregroundColor: Colors.white, 
       ),
       child: const Text(
         'Ask for Leave',
         style: TextStyle(
-          fontSize: 16, // Font size
-          fontWeight: FontWeight.bold, // Font weight
+          fontSize: 16, 
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

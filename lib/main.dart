@@ -1,4 +1,4 @@
-import 'package:attendanceapp/app/core/constant/string_const.dart';
+import 'package:attendanceapp/app/core/utils/constants/string_const.dart';
 import 'package:attendanceapp/app/core/utils/local_storage/storage_utility.dart';
 import 'package:attendanceapp/app/modules/attendance/attendance_view.dart';
 import 'package:attendanceapp/app/modules/auth/emailvarification/emailverificationscreen.dart';

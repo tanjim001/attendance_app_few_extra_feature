@@ -1,4 +1,4 @@
-import 'package:attendanceapp/app/core/constant/string_const.dart';
+import 'package:attendanceapp/app/core/utils/constants/string_const.dart';
 import 'package:attendanceapp/app/modules/onboarding/controller/onboarding_controller.dart';
 import 'package:attendanceapp/app/modules/onboarding/widget/onboarding_page.dart';
 import 'package:flutter/material.dart';

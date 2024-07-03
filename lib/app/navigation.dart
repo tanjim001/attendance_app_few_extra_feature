@@ -57,8 +57,8 @@ class NavigationScreen extends StatelessWidget {
           children: const [
             NoticeList(),
             AttendanceView(),
-            HomePage(), // Replace with your actual widget
-            TaskView(), // Replace with your actual widget
+            HomePage(), 
+            TaskView(),
             ProfileView()
           ],
         );

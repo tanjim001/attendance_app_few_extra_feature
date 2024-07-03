@@ -19,11 +19,11 @@ class SignoutButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
            backgroundColor: Colors.red,
            // Text and icon color
-          side: const BorderSide(color: Colors.red, width: 1.5), // Border color and width
+          side: const BorderSide(color: Colors.red, width: 1.5), 
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16), // Rounded corners
+            borderRadius: BorderRadius.circular(16), 
           ),
-          minimumSize: const Size(120, 50), // Width and height
+          minimumSize: const Size(120, 50), 
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

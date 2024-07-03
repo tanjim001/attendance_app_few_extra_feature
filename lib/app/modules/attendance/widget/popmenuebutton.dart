@@ -1,6 +1,6 @@
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../../core/constant/string_const.dart';
+import '../../../core/utils/constants/string_const.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

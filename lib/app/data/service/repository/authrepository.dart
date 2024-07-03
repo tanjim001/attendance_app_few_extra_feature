@@ -1,4 +1,4 @@
-import 'package:attendanceapp/app/core/constant/string_const.dart';
+import 'package:attendanceapp/app/core/utils/constants/string_const.dart';
 
 import '../../../core/utils/exceptions/firebase_exceptions.dart';
 import '../../../core/utils/exceptions/platform_exceptions.dart';

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:attendanceapp/app/data/models/noticemodel.dart';
-import 'package:attendanceapp/app/core/constant/string_const.dart';
+import 'package:attendanceapp/app/core/utils/constants/string_const.dart';
 
 class NoticeController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

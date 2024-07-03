@@ -1,4 +1,4 @@
-import 'package:attendanceapp/app/core/constant/string_const.dart';
+import 'package:attendanceapp/app/core/utils/constants/string_const.dart';
 import 'package:attendanceapp/app/core/utils/popups/loaders.dart';
 import 'package:attendanceapp/app/data/models/subtask.dart';
 import 'package:attendanceapp/app/data/models/taskmodel.dart';

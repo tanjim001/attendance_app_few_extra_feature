@@ -10,13 +10,13 @@ class RoundedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed:onStart,
       style: ElevatedButton.styleFrom(
-        backgroundColor: Vx.gray900, // Background color
+        backgroundColor: Vx.gray900, 
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12), // Rounded corners
+          borderRadius: BorderRadius.circular(12),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12), // Button padding
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12), 
       ),
-      child: title.text.white.bold.size(20).make(), // Text inside the button
+      child: title.text.white.bold.size(20).make(), 
     );
   }
 }

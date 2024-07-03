@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:attendanceapp/app/core/constant/string_const.dart';
+import 'package:attendanceapp/app/core/utils/constants/string_const.dart';
 import 'package:attendanceapp/app/core/utils/exceptions/firebase_exceptions.dart';
 import 'package:attendanceapp/app/core/utils/exceptions/platform_exceptions.dart';
 import 'package:attendanceapp/app/core/utils/helpers/uniqueid.dart';
