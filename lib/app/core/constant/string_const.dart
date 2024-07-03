@@ -11,6 +11,7 @@ class StringConst {
   static const verified = "VERIFIED";
   static const loggedin="LOGGED_IN";
   static const isfirst="Isfirst";
+  static const fasttimeloggedin="FASTTIMELOGGEDIN";
  //task filter string
   static const assignedTo="assignedTo";
   static const ongoing="Ongoing";

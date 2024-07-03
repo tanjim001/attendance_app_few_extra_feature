@@ -46,8 +46,8 @@ class LoginForm extends StatelessWidget {
               suffixIcon: IconButton(
                   onPressed: onpressed,
                   icon: showpassword
-                      ? const Icon(Iconsax.eye)
-                      : const Icon(Iconsax.eye_slash)),
+                      ? const Icon(Iconsax.eye_slash)
+                      : const Icon(Iconsax.eye)),
               prefixIcon: const Icon(Iconsax.lock),
               labelStyle: const TextStyle(
                   color: Vx.gray500, fontWeight: FontWeight.bold),
@@ -55,7 +55,7 @@ class LoginForm extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(16)),
               ),
             ),
-            obscureText: showpassword,
+            obscureText: !showpassword,
           ),
           8.heightBox,
           const ForgetPassword()

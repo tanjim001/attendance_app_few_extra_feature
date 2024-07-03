@@ -2,7 +2,7 @@ import 'package:attendanceapp/app/core/constant/string_const.dart';
 import 'package:attendanceapp/app/core/utils/local_storage/storage_utility.dart';
 import 'package:attendanceapp/app/modules/attendance/attendance_view.dart';
 import 'package:attendanceapp/app/modules/auth/emailvarification/emailverificationscreen.dart';
-import 'package:attendanceapp/app/modules/auth/forgot_screen.dart';
+import 'package:attendanceapp/app/modules/auth/forgotPass/forgot_screen.dart';
 import 'package:attendanceapp/app/modules/home/home_view.dart';
 import 'package:attendanceapp/app/modules/notice/notice_view.dart';
 import 'package:attendanceapp/app/modules/notice/notice_list.dart';
@@ -15,7 +15,6 @@ import 'package:attendanceapp/app/navigation.dart';
 import 'package:attendanceapp/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get_state_manager/src/simple/list_notifier.dart';
 import 'package:get_storage/get_storage.dart';
 import 'app/modules/auth/login/login_screen.dart';
 import 'app/modules/auth/register/register_screen.dart';
@@ -25,9 +24,7 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //getsorage initialized
   await GetStorage.init();
-  // initialized Firebase
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,

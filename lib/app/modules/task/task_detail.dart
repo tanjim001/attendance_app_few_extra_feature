@@ -74,10 +74,13 @@ class TaskDetail extends StatelessWidget {
                 .size(24)
                 .gray800
                 .make()
-                .paddingOnly(
-                  top: 16,
-                ),
-            12.heightBox,
+                .centered()
+                .paddingOnly(top: 12, bottom: 12)
+                .box
+                .border(width: 2, color: Vx.gray500).rounded
+                .make()
+                .paddingSymmetric(vertical: 12),
+
             // Deadline and Priority
             "Deadline: ${task.deadline}".text.size(20).semiBold.gray700.make(),
             16.heightBox,
@@ -159,7 +162,7 @@ class TaskDetail extends StatelessWidget {
                       done: subtask.done ?? false,
                       onpress: () {
                         taskController.updateSubtask(
-                         taskId: task.id!,
+                          taskId: task.id!,
                           subtaskTitle: subtask.title!,
                           newDoneStatus: true,
                         );
@@ -169,9 +172,8 @@ class TaskDetail extends StatelessWidget {
                       ongoing:
                           task.status == StringConst.ongoing ? true : false,
                       addAttachment: () async {
-                        
                         final data = await taskController.uploadFile();
-                        
+
                         taskController.updateSubtask(
                           taskId: task.id!,
                           subtaskTitle: subtask.title!,

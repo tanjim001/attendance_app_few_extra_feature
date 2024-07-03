@@ -1,3 +1,4 @@
+import 'package:attendanceapp/app/data/service/api/locationtimecontroller.dart';
 import 'package:attendanceapp/app/modules/profile/controller/profilecontroller.dart';
 import 'package:attendanceapp/app/modules/profile/widget/customshimer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -7,7 +8,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 AppBar homeAppBar() {
   final profileController = Get.put(ProfileController());
-
+    final greeting = getGreeting();
   return AppBar(
     toolbarHeight: 80,
     backgroundColor: Vx.gray600,
@@ -20,7 +21,7 @@ AppBar homeAppBar() {
           return 'Hey ${data.name}'.text.bold.size(28).white.capitalize.make();
         }),
         5.heightBox,
-        'Good Morning! Make your attendance'
+        '$greeting Make your attendance'
             .text
             .semiBold
             .size(16)
@@ -58,3 +59,14 @@ AppBar homeAppBar() {
     ],
   );
 }
+  String getGreeting() {
+    final controller=Get.put(LocationTimeController());
+    final hour = controller.datetime.value!.hour!;
+    if (hour < 12) {
+      return 'Good Morning!';
+    } else if (hour < 18) {
+      return 'Good Afternoon!';
+    } else {
+      return 'Good Evening!';
+    }
+  }

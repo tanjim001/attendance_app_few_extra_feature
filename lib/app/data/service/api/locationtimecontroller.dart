@@ -4,6 +4,7 @@ import 'package:attendanceapp/app/core/constant/string_const.dart';
 import 'package:attendanceapp/app/core/utils/formatters/formatter.dart';
 import 'package:attendanceapp/app/core/utils/local_storage/storage_utility.dart';
 import 'package:attendanceapp/app/data/models/datetime.dart';
+import 'package:attendanceapp/loader.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -12,14 +13,12 @@ import 'package:logger/logger.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:http/http.dart' as http;
 
-
 class LocationTimeController extends GetxController {
   final Rx<Datetime?> datetime = Datetime().obs;
+  final RxBool isDataFetched = false.obs;
   Timer? _timer;
-  final Completer<void> _initializationCompleter = Completer<void>();
   final Logger logger = Logger();
   final LocalStorage localStorage = LocalStorage();
-  Future<void> get initialization => _initializationCompleter.future;
 
   @override
   void onInit() {
@@ -62,8 +61,10 @@ class LocationTimeController extends GetxController {
         datetime.value = Datetime.fromJson(data);
         await localStorage.saveData(StringConst.date, Formatter.formatDatetime(datetime.value!));
         logger.d("Fetched time from API: $data");
+        isDataFetched.value = true;
+        logger.d("isDataFetched is set to true"); 
+        if(localStorage.readData(StringConst.fasttimeloggedin)==null){Get.offAll(()=>const DataFetching());}
         _startTimer();
-        _initializationCompleter.complete();
       } else {
         _handleError('Failed to get location time');
       }
@@ -116,8 +117,5 @@ class LocationTimeController extends GetxController {
       backgroundColor: Colors.redAccent,
       colorText: Colors.white,
     );
-    if (!_initializationCompleter.isCompleted) {
-      _initializationCompleter.completeError(message);
-    }
   }
 }

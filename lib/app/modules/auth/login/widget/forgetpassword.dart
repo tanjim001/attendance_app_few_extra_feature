@@ -1,4 +1,4 @@
-import 'package:attendanceapp/app/modules/auth/forgot_screen.dart';
+import 'package:attendanceapp/app/modules/auth/forgotPass/forgot_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
